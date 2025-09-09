@@ -17,7 +17,22 @@ public class MainAluno {
         turmaED.add(new Aluno("Rafaela",123457,"Estruturas de dados"));
         turmaED.add(new Aluno("Renato",123757,"Estruturas de dados"));
 
-        turmaBD.forEach(a -> System.out.println(a));
 
+        System.out.println("Lista de todos os alunos matriculados");
+        Set<Aluno> uniao = new HashSet<>(turmaBD);
+        uniao.addAll(turmaED);
+        //turmaBD.forEach(a -> System.out.println(a));
+        uniao.forEach(a -> System.out.println(a));
+
+        System.out.println("\nLista dos alunos matriculados em banco de dados");
+        Set<Aluno> soBD = new HashSet<>(turmaBD);
+        soBD.removeAll(turmaED);
+        soBD.forEach(a -> System.out.println(a));
+
+        System.out.println("\nLista dos alunos matriculados em ambas");
+        Set<Aluno> ambos = new HashSet<>(turmaBD);
+        ambos.retainAll(turmaED);
+        //ambos.forEach(a -> System.out.println(a));
+        ambos.forEach(System.out :: println);
     }
 }
